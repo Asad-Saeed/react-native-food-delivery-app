@@ -1,4 +1,4 @@
-import NavigationComponent from "./src/components/layout/navigation";
+import NavigationComponent from "@/components/navigation";
 
 export default function App() {
   return <NavigationComponent />;
