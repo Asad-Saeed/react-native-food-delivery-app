@@ -3,7 +3,7 @@ import React from "react";
 import * as Icon from "react-native-feather";
 import { themeColors } from "@/theme";
 
-const SearchBar = () => {
+const SearchBar: React.FC = () => {
   return (
     <View className="flex-row items-center space-x-2 px-4 pb-2">
       <View className="flex-row flex-1 items-center p-3 rounded-full border border-gray-300">
