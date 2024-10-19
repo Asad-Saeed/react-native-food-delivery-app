@@ -15,7 +15,7 @@ const Categories: React.FC = () => {
         contentContainerStyle={{ paddingHorizontal: 15 }}
       >
         {categories?.map((category: Category, index: number) => {
-          const isActive = category?.id == activeCategory;
+          const isActive = category?.id === activeCategory;
           const btnClass = isActive ? "bg-gray-600" : "bg-gray-200";
           const textClass = isActive
             ? "text-gray-800 font-semibold"
@@ -26,12 +26,11 @@ const Categories: React.FC = () => {
                 className={`p-1 rounded-full shadow ${btnClass}`}
                 onPress={() => setActiveCategory(category?.id)}
               >
-                <Image
-                  source={category?.image}
-                  style={{ height: 45, width: 45 }}
-                />
+                <Image source={category?.image} className="h-12 w-12" />
               </TouchableOpacity>
-              <Text className={`text-sm ${textClass}`}>{category?.name}</Text>
+              <Text className={`text-sm ${textClass} mt-1`}>
+                {category?.name}
+              </Text>
             </View>
           );
         })}
