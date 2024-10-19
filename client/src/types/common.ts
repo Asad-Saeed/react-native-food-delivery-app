@@ -5,6 +5,7 @@ export type RootStackParamList = {
   Home: undefined;
   Restaurant: { item: RestaurantItem };
   Cart: undefined;
+  OrderPreparing: undefined;
   // Add other screens here
 };
 

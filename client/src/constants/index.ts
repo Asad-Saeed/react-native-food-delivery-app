@@ -73,6 +73,40 @@ export const featured = {
           stars: 4.5,
           image: require("../../assets/images/restaurants/papajohns.jpg"),
         },
+        {
+          id: 4,
+          name: "Mc Chicken Nuggets",
+          description:
+            "Crispy chicken nuggets served with your choice of dipping sauce.",
+          price: 4.49,
+          stars: 4.3,
+          image: require("../../assets/images/restaurants/papajohns.jpg"),
+        },
+        {
+          id: 5,
+          name: "Chicken Sandwich",
+          description: "Crispy chicken filet, pickles, and mayo on a soft bun.",
+          price: 4.99,
+          stars: 4.5,
+          image: require("../../assets/images/restaurants/papajohns.jpg"),
+        },
+        {
+          id: 6,
+          name: "Mc Chicken Nuggets",
+          description:
+            "Crispy chicken nuggets served with your choice of dipping sauce.",
+          price: 4.49,
+          stars: 4.3,
+          image: require("../../assets/images/restaurants/papajohns.jpg"),
+        },
+        {
+          id: 7,
+          name: "Chicken Sandwich",
+          description: "Crispy chicken filet, pickles, and mayo on a soft bun.",
+          price: 4.99,
+          stars: 4.5,
+          image: require("../../assets/images/restaurants/papajohns.jpg"),
+        },
       ],
     },
     {
@@ -138,6 +172,99 @@ export const featured = {
     },
     {
       id: 4,
+      name: "Subway",
+      image: require("../../assets/images/restaurants/papajohns.jpg"),
+      stars: 4.3,
+      reviews: 90,
+      category: "Fast Food",
+      address: "123 Main Street",
+      description:
+        "Two all-beef patties, special sauce, lettuce, cheese, pickles, onions on a sesame seed bun.",
+      dishes: [
+        {
+          id: 1,
+          name: "Turkey Sub",
+          description:
+            "Freshly baked bread, tender turkey slices, and your choice of veggies and condiments.",
+          price: 7.49,
+          stars: 4.7,
+          image: require("../../assets/images/categories/icons8-tropical-fish-96.png"),
+        },
+        {
+          id: 2,
+          name: "Veggie Delite",
+          description:
+            "A sub packed with crisp vegetables and a light drizzle of your favorite sauce.",
+          price: 5.99,
+          stars: 4.2,
+          image: require("../../assets/images/restaurants/papajohns.jpg"),
+        },
+      ],
+    },
+    {
+      id: 5,
+      name: "Subway",
+      image: require("../../assets/images/restaurants/papajohns.jpg"),
+      stars: 4.3,
+      reviews: 90,
+      category: "Fast Food",
+      address: "123 Main Street",
+      description:
+        "Two all-beef patties, special sauce, lettuce, cheese, pickles, onions on a sesame seed bun.",
+      dishes: [
+        {
+          id: 1,
+          name: "Turkey Sub",
+          description:
+            "Freshly baked bread, tender turkey slices, and your choice of veggies and condiments.",
+          price: 7.49,
+          stars: 4.7,
+          image: require("../../assets/images/categories/icons8-tropical-fish-96.png"),
+        },
+        {
+          id: 2,
+          name: "Veggie Delite",
+          description:
+            "A sub packed with crisp vegetables and a light drizzle of your favorite sauce.",
+          price: 5.99,
+          stars: 4.2,
+          image: require("../../assets/images/restaurants/papajohns.jpg"),
+        },
+      ],
+    },
+    {
+      id: 6,
+      name: "Subway",
+      image: require("../../assets/images/restaurants/papajohns.jpg"),
+      stars: 4.3,
+      reviews: 90,
+      category: "Fast Food",
+      address: "123 Main Street",
+      description:
+        "Two all-beef patties, special sauce, lettuce, cheese, pickles, onions on a sesame seed bun.",
+      dishes: [
+        {
+          id: 1,
+          name: "Turkey Sub",
+          description:
+            "Freshly baked bread, tender turkey slices, and your choice of veggies and condiments.",
+          price: 7.49,
+          stars: 4.7,
+          image: require("../../assets/images/categories/icons8-tropical-fish-96.png"),
+        },
+        {
+          id: 2,
+          name: "Veggie Delite",
+          description:
+            "A sub packed with crisp vegetables and a light drizzle of your favorite sauce.",
+          price: 5.99,
+          stars: 4.2,
+          image: require("../../assets/images/restaurants/papajohns.jpg"),
+        },
+      ],
+    },
+    {
+      id: 7,
       name: "Subway",
       image: require("../../assets/images/restaurants/papajohns.jpg"),
       stars: 4.3,
