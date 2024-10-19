@@ -1,25 +1,22 @@
-import {
-  View,
-  Text,
-  ScrollView,
-  Image,
-  Platform,
-  StatusBar,
-  TouchableOpacity,
-  SafeAreaView,
-} from "react-native";
+import { View, Text, ScrollView, Image, TouchableOpacity } from "react-native";
 import React from "react";
-import { RouteProp, useNavigation, useRoute } from "@react-navigation/native";
+import {
+  NavigationProp,
+  RouteProp,
+  useNavigation,
+  useRoute,
+} from "@react-navigation/native";
 import { Dish, RootStackParamList } from "@/types";
 import * as Icon from "react-native-feather";
 import { themeColors } from "@/theme";
 import Dishes from "@/components/restaurant/dishes";
 import CartIcon from "@/components/restaurant/cartIcon";
 import NoDataPlaceholder from "@/components/common/noData";
+import LayoutWrapper from "@/components/layout/layout";
 
 const RestaurantScreen: React.FC = () => {
   const route = useRoute<RouteProp<RootStackParamList, "Restaurant">>();
-  const navigation = useNavigation();
+  const navigation = useNavigation<NavigationProp<RootStackParamList>>();
   const { item } = route.params;
 
   // Check if item exists
@@ -28,19 +25,7 @@ const RestaurantScreen: React.FC = () => {
   }
 
   return (
-    <SafeAreaView
-      style={{
-        paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
-        backgroundColor: "white",
-        flex: 1,
-      }}
-    >
-      <StatusBar
-        barStyle="dark-content"
-        translucent={true}
-        backgroundColor="transparent"
-      />
-
+    <LayoutWrapper>
       {/* Cart Icon */}
       <CartIcon />
 
@@ -98,7 +83,7 @@ const RestaurantScreen: React.FC = () => {
           </View>
         </View>
       </ScrollView>
-    </SafeAreaView>
+    </LayoutWrapper>
   );
 };
 

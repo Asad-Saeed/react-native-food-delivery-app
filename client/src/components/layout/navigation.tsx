@@ -1,3 +1,4 @@
+import CartScreen from "@/screens/cart";
 import HomeSceen from "@/screens/home";
 import RestaurantScreen from "@/screens/restaurant";
 import { NavigationContainer } from "@react-navigation/native";
@@ -17,6 +18,11 @@ const NavigationComponent: React.FC = () => {
       >
         <Stack.Screen name="Home" component={HomeSceen} />
         <Stack.Screen name="Restaurant" component={RestaurantScreen} />
+        <Stack.Screen
+          name="Cart"
+          component={CartScreen}
+          options={{ presentation: "modal" }}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );

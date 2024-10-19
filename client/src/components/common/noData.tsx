@@ -1,14 +1,7 @@
-import {
-  View,
-  Text,
-  Image,
-  TouchableOpacity,
-  SafeAreaView,
-  StatusBar,
-  Platform,
-} from "react-native";
+import { View, Text, Image, TouchableOpacity } from "react-native";
 import React from "react";
 import { NoDataPlaceholderProps } from "@/types";
+import LayoutWrapper from "../layout/layout";
 
 const NoDataPlaceholder: React.FC<NoDataPlaceholderProps> = ({
   message = "No Data Available",
@@ -16,19 +9,7 @@ const NoDataPlaceholder: React.FC<NoDataPlaceholderProps> = ({
   retryText = "Retry",
 }) => {
   return (
-    <SafeAreaView
-      style={{
-        paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
-        backgroundColor: "white",
-        flex: 1,
-      }}
-    >
-      <StatusBar
-        barStyle="dark-content"
-        translucent={true}
-        backgroundColor="transparent"
-      />
-
+    <LayoutWrapper>
       <View className="flex-1 justify-center items-center p-5">
         {/* Image Placeholder */}
         <Image
@@ -52,7 +33,7 @@ const NoDataPlaceholder: React.FC<NoDataPlaceholderProps> = ({
           </TouchableOpacity>
         )}
       </View>
-    </SafeAreaView>
+    </LayoutWrapper>
   );
 };
 

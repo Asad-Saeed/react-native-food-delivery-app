@@ -1,24 +1,13 @@
-import { SafeAreaView, Platform, StatusBar, ScrollView } from "react-native";
+import { ScrollView } from "react-native";
 import React from "react";
 import Categories from "@/components/home/categories";
 import SearchBar from "@/components/common/searchBar";
 import Featured from "@/components/home/featured";
+import LayoutWrapper from "@/components/layout/layout";
 
 const HomeScreen: React.FC = () => {
   return (
-    <SafeAreaView
-      style={{
-        paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
-        backgroundColor: "white",
-        flex: 1,
-      }}
-    >
-      <StatusBar
-        barStyle="dark-content"
-        translucent={true}
-        backgroundColor="transparent"
-      />
-
+    <LayoutWrapper>
       {/* Search bar */}
       <SearchBar />
 
@@ -35,7 +24,7 @@ const HomeScreen: React.FC = () => {
         {/* Featured */}
         <Featured />
       </ScrollView>
-    </SafeAreaView>
+    </LayoutWrapper>
   );
 };
 
