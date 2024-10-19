@@ -1,5 +1,6 @@
 import CartScreen from "@/screens/cart";
 import HomeSceen from "@/screens/home";
+import OrderPreparingScreen from "@/screens/orderPreparing";
 import RestaurantScreen from "@/screens/restaurant";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
@@ -30,6 +31,14 @@ const NavigationComponent: React.FC = () => {
             contentStyle: {
               backgroundColor: "transparent",
             },
+          }}
+        />
+        <Stack.Screen
+          name="OrderPreparing"
+          component={OrderPreparingScreen}
+          options={{
+            presentation: "fullScreenModal",
+            animation: "slide_from_bottom",
           }}
         />
       </Stack.Navigator>
