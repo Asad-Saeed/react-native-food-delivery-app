@@ -17,20 +17,21 @@ export interface Dish {
   name: string;
   description: string;
   price: number;
-  rating: number;
+  stars: number;
   image: any;
 }
 
-export interface Restaurant {
+export interface RestaurantItem {
   id: number;
   name: string;
   image: any;
-  rating: number;
+  stars: number;
   reviews: number;
   dishes: Dish[];
   category: string;
   address: string;
+  description: string;
 }
 export interface RestaurantCardProps {
-  item: Restaurant; // Restaurant interface
+  item: RestaurantItem; // Restaurant item interface
 }

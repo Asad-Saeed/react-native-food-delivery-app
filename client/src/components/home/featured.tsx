@@ -8,9 +8,15 @@ import {
 } from "react-native";
 import React from "react";
 import { featured } from "@/constants";
-import { FeaturedRowProps, Restaurant, RestaurantCardProps } from "@/types";
+import {
+  FeaturedRowProps,
+  RestaurantItem,
+  RestaurantCardProps,
+  RootStackParamList,
+} from "@/types";
 import { themeColors } from "@/theme";
 import * as Icon from "react-native-feather";
+import { NavigationProp, useNavigation } from "@react-navigation/native";
 
 const Featured: React.FC = () => {
   return (
@@ -55,10 +61,11 @@ const FeaturedRow: React.FC<FeaturedRowProps> = ({ ...props }) => {
         showsHorizontalScrollIndicator={false}
         contentContainerStyle={{
           paddingHorizontal: 15,
+          paddingVertical: 12,
         }}
-        className="overflow-visible py-5"
+        className="overflow-visible"
       >
-        {restaurants?.map((restaurant: Restaurant, index: number) => {
+        {restaurants?.map((restaurant: RestaurantItem, index: number) => {
           return <RestaurantCard key={index} item={restaurant} />;
         })}
       </ScrollView>
@@ -69,28 +76,31 @@ const FeaturedRow: React.FC<FeaturedRowProps> = ({ ...props }) => {
 // RestaurantCard Component
 const RestaurantCard: React.FC<RestaurantCardProps> = ({ ...props }) => {
   const { item } = props;
+  const navigation = useNavigation<NavigationProp<RootStackParamList>>();
   return (
-    <TouchableWithoutFeedback>
+    <TouchableWithoutFeedback
+      onPress={() => navigation.navigate("Restaurant", { item })}
+    >
       <View
         style={{
-          shadowColor: themeColors.bgColor(0.2),
+          shadowColor: themeColors.bgColor(0.9),
           shadowRadius: 7,
           elevation: 5, // Android shadow
           shadowOpacity: 0.3,
           shadowOffset: { width: 0, height: 3 }, // iOS shadow
         }}
-        className="mr-3 bg-white rounded-3xl shadow-lg border border-gray-100"
+        className="mr-3 bg-white rounded-3xl shadow-lg"
       >
         <Image source={item?.image} className="w-64 h-36 rounded-t-3xl" />
         <View className="px-3 pb-4 space-y-2">
           <Text className="text-lg font-bold pt-2">{item?.name}</Text>
           <View className="flex-row items-center space-x-1">
             <Image
-              source={require("../../../assets/images/restaurants/star.jpg")}
+              source={require("../../../assets/images/common/star.jpg")}
               className="h-5 w-5"
             />
             <Text className="text-xs">
-              <Text className="text-green-700">{item?.rating} </Text>
+              <Text className="text-green-700">{item?.stars} </Text>
               <Text className="text-gray-700">
                 ({item?.reviews} Reviews) .
                 <Text className="font-semibold"> {item?.category}</Text>
