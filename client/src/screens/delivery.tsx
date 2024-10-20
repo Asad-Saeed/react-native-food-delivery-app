@@ -1,22 +1,23 @@
 import { View, Text, Image, TouchableOpacity } from "react-native";
 import React from "react";
 import LayoutWrapper from "@/components/layout/layout";
-import { featured } from "@/constants";
 import { NavigationProp, useNavigation } from "@react-navigation/native";
 import { RootStackParamList } from "@/types";
 import MapView, { Marker } from "react-native-maps";
 import { themeColors } from "@/theme";
 import * as Icon from "react-native-feather";
+import { useSelector } from "react-redux";
+import { selectRestaurant } from "@/store/slices/restaurant";
 
 const DeliveryScreen: React.FC = () => {
-  const restaurant = featured?.restaurants[0];
+  const restaurant = useSelector(selectRestaurant);
   const navigation = useNavigation<NavigationProp<RootStackParamList>>();
   return (
     <LayoutWrapper>
       <MapView
         initialRegion={{
-          latitude: restaurant?.lat,
-          longitude: restaurant?.lng,
+          latitude: restaurant?.lat || 0,
+          longitude: restaurant?.lng || 0,
           latitudeDelta: 0.1,
           longitudeDelta: 0.1,
         }}
@@ -25,8 +26,8 @@ const DeliveryScreen: React.FC = () => {
       >
         <Marker
           coordinate={{
-            latitude: restaurant?.lat,
-            longitude: restaurant?.lng,
+            latitude: restaurant?.lat || 0,
+            longitude: restaurant?.lng || 0,
           }}
           title={restaurant?.name}
           description={restaurant?.description}
