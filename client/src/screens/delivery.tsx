@@ -6,12 +6,18 @@ import { RootStackParamList } from "@/types";
 import MapView, { Marker } from "react-native-maps";
 import { themeColors } from "@/theme";
 import * as Icon from "react-native-feather";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { selectRestaurant } from "@/store/slices/restaurant";
+import { emptyCart } from "@/store/slices/cart";
 
 const DeliveryScreen: React.FC = () => {
   const restaurant = useSelector(selectRestaurant);
   const navigation = useNavigation<NavigationProp<RootStackParamList>>();
+  const dispatch = useDispatch();
+  const cancelOrder = () => {
+    dispatch(emptyCart());
+    navigation.navigate("Home");
+  };
   return (
     <LayoutWrapper>
       <MapView
@@ -80,11 +86,7 @@ const DeliveryScreen: React.FC = () => {
               />
             </TouchableOpacity>
             <TouchableOpacity className="bg-white p-2 rounded-full">
-              <Icon.X
-                stroke="red"
-                strokeWidth={4}
-                onPress={() => navigation.navigate("Home")}
-              />
+              <Icon.X stroke="red" strokeWidth={4} onPress={cancelOrder} />
             </TouchableOpacity>
           </View>
         </View>

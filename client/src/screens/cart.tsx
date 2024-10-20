@@ -6,18 +6,48 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { themeColors } from "@/theme";
 import * as Icon from "react-native-feather";
 import { NavigationProp, useNavigation } from "@react-navigation/native";
 import { Dish, RootStackParamList } from "@/types";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { selectRestaurant } from "@/store/slices/restaurant";
+import {
+  removeFromCart,
+  selectCartItems,
+  selectCartTotal,
+} from "@/store/slices/cart";
+import NoDataPlaceholder from "@/components/common/noData";
 
 const CartScreen: React.FC = () => {
   const navigation = useNavigation<NavigationProp<RootStackParamList>>();
   const { height: screenHeight } = Dimensions.get("window");
   const restaurant = useSelector(selectRestaurant);
+  const cartItems = useSelector(selectCartItems);
+  const [groupedItem, setGroupedItem] = useState<{
+    [key: string]: Dish & { quantity: number };
+  }>({});
+
+  useEffect(() => {
+    if (cartItems?.length) {
+      const items = cartItems.reduce((group: any, item) => {
+        const { id, name, description, price, stars, image, quantity } = item;
+
+        if (group[id]) {
+          group[id].quantity += quantity;
+        } else {
+          group[id] = { id, name, description, price, stars, image, quantity };
+        }
+
+        return group;
+      }, {});
+
+      setGroupedItem(items);
+    } else {
+      setGroupedItem({});
+    }
+  }, [cartItems]);
 
   return (
     <View
@@ -61,9 +91,13 @@ const CartScreen: React.FC = () => {
         }}
         className="bg-white pt-5"
       >
-        {restaurant?.dishes?.map((dish, index) => (
-          <DishCard key={index} {...dish} />
-        ))}
+        {Object.entries(groupedItem)?.length > 0 ? (
+          Object.entries(groupedItem).map(([key, dish]) => (
+            <DishCard key={key} {...dish} />
+          ))
+        ) : (
+          <NoDataPlaceholder message="No Cart Item Available!" />
+        )}
       </ScrollView>
 
       {/* Total */}
@@ -74,11 +108,13 @@ const CartScreen: React.FC = () => {
 
 export default CartScreen;
 
-const DishCard: React.FC<Dish> = ({ ...props }) => {
-  const { image, name, price, description } = props;
+const DishCard: React.FC<Dish & { quantity: number }> = ({ ...props }) => {
+  const { name, image, price, quantity } = props;
+  const dispatch = useDispatch();
+
   return (
     <View
-      className="flex-row items-center bg-white  space-x-3 py-3 px-4 rounded-3xl mx-2 mb-3 shadow-2xl border border-gray-100"
+      className="flex-row items-center bg-white space-x-3 py-3 px-4 rounded-3xl mx-2 mb-3 shadow-2xl border border-gray-100"
       style={{
         shadowColor: themeColors.bgColor(0.9),
         shadowRadius: 7,
@@ -88,7 +124,7 @@ const DishCard: React.FC<Dish> = ({ ...props }) => {
       }}
     >
       <Text className="font-bold" style={{ color: themeColors.text }}>
-        2 x
+        {quantity} x
       </Text>
       <Image source={image} className="h-14 w-14 rounded-full" />
 
@@ -97,6 +133,13 @@ const DishCard: React.FC<Dish> = ({ ...props }) => {
       </Text>
       <Text className="font-semibold text-sm">${price}</Text>
       <TouchableOpacity
+        onPress={() =>
+          dispatch(
+            removeFromCart({
+              id: props?.id?.toString(),
+            })
+          )
+        }
         className="rounded-full p-1"
         style={{ backgroundColor: themeColors.bgColor(1) }}
       >
@@ -108,6 +151,8 @@ const DishCard: React.FC<Dish> = ({ ...props }) => {
 
 const TotalCard: React.FC = () => {
   const navigation = useNavigation<NavigationProp<RootStackParamList>>();
+  const cartTotal = useSelector(selectCartTotal);
+  const deliveryFee = 3;
   return (
     <View
       className="rounded-t-3xl space-y-4 p-6 px-8"
@@ -115,17 +160,19 @@ const TotalCard: React.FC = () => {
     >
       <View className="flex-row justify-between">
         <Text className="text-gray-700">SubTotal</Text>
-        <Text className="text-gray-700">$20</Text>
+        <Text className="text-gray-700">${cartTotal?.toFixed(2) || 0}</Text>
       </View>
       <View className="flex-row justify-between">
         <Text className="text-gray-700">Delivery Fee</Text>
-        <Text className="text-gray-700">$2</Text>
+        <Text className="text-gray-700">${deliveryFee?.toFixed(2)}</Text>
       </View>
       <View className="flex-row justify-between ">
         <Text className="text-gray-700 font-extrabold">Order Total</Text>
-        <Text className="text-gray-700 font-extrabold">$22</Text>
+        <Text className="text-gray-700 font-extrabold">
+          ${(cartTotal + deliveryFee)?.toFixed(2)}
+        </Text>
       </View>
-      {/* Place Order Button*/}
+      {/* Place Order Button */}
       <TouchableOpacity
         onPress={() => navigation.navigate("OrderPreparing")}
         className="p-3 rounded-full"

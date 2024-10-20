@@ -4,7 +4,10 @@ import { RestaurantItem } from "./home";
 export interface CartItem {
   id: string;
   name: string;
+  description: string;
   price: number;
+  stars: number;
+  image: any;
   quantity: number;
 }
 
