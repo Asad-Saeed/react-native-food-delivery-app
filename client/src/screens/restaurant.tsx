@@ -1,5 +1,5 @@
 import { View, Text, ScrollView, Image, TouchableOpacity } from "react-native";
-import React from "react";
+import React, { useEffect } from "react";
 import {
   NavigationProp,
   RouteProp,
@@ -13,11 +13,20 @@ import Dishes from "@/components/restaurant/dishes";
 import CartIcon from "@/components/restaurant/cartIcon";
 import NoDataPlaceholder from "@/components/common/noData";
 import LayoutWrapper from "@/components/layout/layout";
+import { useDispatch } from "react-redux";
+import { setRestaurant } from "@/store/slices/restaurant";
 
 const RestaurantScreen: React.FC = () => {
   const route = useRoute<RouteProp<RootStackParamList, "Restaurant">>();
   const navigation = useNavigation<NavigationProp<RootStackParamList>>();
   const { item } = route.params;
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (item) {
+      dispatch(setRestaurant({ ...item }));
+    }
+  }, []);
 
   // Check if item exists
   if (!item) {

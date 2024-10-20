@@ -7,16 +7,17 @@ import {
   View,
 } from "react-native";
 import React from "react";
-import { featured } from "@/constants";
 import { themeColors } from "@/theme";
 import * as Icon from "react-native-feather";
 import { NavigationProp, useNavigation } from "@react-navigation/native";
 import { Dish, RootStackParamList } from "@/types";
+import { useSelector } from "react-redux";
+import { selectRestaurant } from "@/store/slices/restaurant";
 
 const CartScreen: React.FC = () => {
   const navigation = useNavigation<NavigationProp<RootStackParamList>>();
   const { height: screenHeight } = Dimensions.get("window");
-  const restaurant = featured.restaurants[0];
+  const restaurant = useSelector(selectRestaurant);
 
   return (
     <View
