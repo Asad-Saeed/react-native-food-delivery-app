@@ -9,7 +9,7 @@ const OrderPreparingScreen: React.FC = () => {
   useEffect(() => {
     setTimeout(() => {
       navigation.navigate("Delivery");
-    }, 3000);
+    }, 2000);
   }, []);
   return (
     <LayoutWrapper>

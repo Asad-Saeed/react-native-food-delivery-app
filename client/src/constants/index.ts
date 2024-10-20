@@ -46,6 +46,8 @@ export const featured = {
       address: "123 Main Street",
       description:
         "Two all-beef patties, special sauce, lettuce, cheese, pickles, onions on a sesame seed bun.",
+      lat: 31.582045,
+      lng: 74.329376,
       dishes: [
         {
           id: 1,
@@ -119,6 +121,8 @@ export const featured = {
       address: "123 Main Street",
       description:
         "Two all-beef patties, special sauce, lettuce, cheese, pickles, onions on a sesame seed bun.",
+      lat: 31.582045,
+      lng: 74.329376,
       dishes: [
         {
           id: 1,
@@ -149,6 +153,8 @@ export const featured = {
       address: "123 Main Street",
       description:
         "Two all-beef patties, special sauce, lettuce, cheese, pickles, onions on a sesame seed bun.",
+      lat: 31.582045,
+      lng: 74.329376,
       dishes: [
         {
           id: 1,
@@ -180,6 +186,8 @@ export const featured = {
       address: "123 Main Street",
       description:
         "Two all-beef patties, special sauce, lettuce, cheese, pickles, onions on a sesame seed bun.",
+      lat: 31.582045,
+      lng: 74.329376,
       dishes: [
         {
           id: 1,
@@ -211,6 +219,8 @@ export const featured = {
       address: "123 Main Street",
       description:
         "Two all-beef patties, special sauce, lettuce, cheese, pickles, onions on a sesame seed bun.",
+      lat: 31.582045,
+      lng: 74.329376,
       dishes: [
         {
           id: 1,
@@ -242,6 +252,8 @@ export const featured = {
       address: "123 Main Street",
       description:
         "Two all-beef patties, special sauce, lettuce, cheese, pickles, onions on a sesame seed bun.",
+      lat: 31.582045,
+      lng: 74.329376,
       dishes: [
         {
           id: 1,
@@ -273,6 +285,8 @@ export const featured = {
       address: "123 Main Street",
       description:
         "Two all-beef patties, special sauce, lettuce, cheese, pickles, onions on a sesame seed bun.",
+      lat: 31.582045,
+      lng: 74.329376,
       dishes: [
         {
           id: 1,

@@ -31,6 +31,8 @@ export interface RestaurantItem {
   category: string;
   address: string;
   description: string;
+  lat: number;
+  lng: number;
 }
 export interface RestaurantCardProps {
   item: RestaurantItem; // Restaurant item interface

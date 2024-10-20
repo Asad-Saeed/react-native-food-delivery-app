@@ -1,17 +1,16 @@
 import CartScreen from "@/screens/cart";
+import DeliveryScreen from "@/screens/delivery";
 import HomeSceen from "@/screens/home";
 import OrderPreparingScreen from "@/screens/orderPreparing";
 import RestaurantScreen from "@/screens/restaurant";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import React from "react";
-import { Dimensions, Platform } from "react-native";
+import { Platform } from "react-native";
 
 const Stack = createNativeStackNavigator();
 
 const NavigationComponent: React.FC = () => {
-  const { height: screenHeight } = Dimensions.get("window");
-
   return (
     <NavigationContainer independent={true}>
       <Stack.Navigator
@@ -36,6 +35,14 @@ const NavigationComponent: React.FC = () => {
         <Stack.Screen
           name="OrderPreparing"
           component={OrderPreparingScreen}
+          options={{
+            presentation: "fullScreenModal",
+            animation: "slide_from_bottom",
+          }}
+        />
+        <Stack.Screen
+          name="Delivery"
+          component={DeliveryScreen}
           options={{
             presentation: "fullScreenModal",
             animation: "slide_from_bottom",
